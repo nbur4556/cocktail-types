@@ -1,6 +1,6 @@
 const App: React.FC = () => {
   return <main>
-    Hello World
+    <p>Hello World</p>
   </main>
 }
 
