@@ -3,9 +3,8 @@ import axios from "axios";
 const baseUrl: string = 'https://www.thecocktaildb.com/api/json/v1';
 const apiKey: string | undefined = process.env.REACT_APP_COCKTAILDB_API_KEY;
 
-interface IDrink {
-    [key: string]: string
-}
+//Interfaces
+export interface IData { [key: string]: string }
 
 interface ISearchParams {
     name: string,
@@ -14,9 +13,9 @@ interface ISearchParams {
 }
 
 // Return a random cocktail
-const getRandomCocktail = (cb: (x: IDrink) => void): void => {
+const getRandomCocktail = (cb: (data: IData) => void): void => {
     axios.get(`${baseUrl}/${apiKey}/random.php`)
-        .then(result => cb(result.data.drinks[0]))
+        .then(result => cb(result.data))
         .catch(err => console.log(err));
 }
 
@@ -24,7 +23,7 @@ const getRandomCocktail = (cb: (x: IDrink) => void): void => {
 const searchCocktail = (
     iSearch: "name" | "ingredient" | "letter",
     searchTerm: string,
-    cb: (x: { [key: string]: string }) => void
+    cb: (data: IData) => void
 ): void => {
     const searchParams: ISearchParams = { name: 's', ingredient: 'i', letter: 'f' }
     axios.get(`${baseUrl}/${apiKey}/search.php?${searchParams[iSearch]}=${searchTerm}`)
@@ -32,7 +31,7 @@ const searchCocktail = (
         .catch(err => console.log(err));
 }
 
-const searchCocktailByIngredient = (searchTerm: string, cb: (x: { [key: string]: string }) => void) => {
+const searchCocktailByIngredient = (searchTerm: string, cb: (data: IData) => void) => {
     axios.get(`${baseUrl}/${apiKey}/filter.php?i=${searchTerm}`)
         .then(result => cb(result.data))
         .catch(err => console.log(err));
