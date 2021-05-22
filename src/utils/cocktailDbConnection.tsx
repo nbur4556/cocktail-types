@@ -37,4 +37,10 @@ const searchCocktailByIngredient = (searchTerm: string, cb: (data: IData) => voi
         .catch(err => console.log(err));
 }
 
-export { getRandomCocktail, searchCocktail, searchCocktailByIngredient };
+const searchCocktailByCategory = (searchTerm: string, cb: (data: IData) => void) => {
+    axios.get(`${baseUrl}/${apiKey}/filter.php?c=${searchTerm}`)
+        .then(result => cb(result.data))
+        .catch(err => console.log(err));
+}
+
+export { getRandomCocktail, searchCocktail, searchCocktailByIngredient, searchCocktailByCategory };
