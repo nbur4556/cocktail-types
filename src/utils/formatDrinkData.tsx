@@ -1,5 +1,5 @@
 // Interfaces
-
+import { IDrinkData } from '../interfaces';
 interface IDrinkResponse {
     idDrink: string,
     strDrink: string,
@@ -40,18 +40,6 @@ interface IDrinkResponse {
     [key: string]: any
 }
 
-export interface IDrinkData {
-    id: string,
-    drinkName: string,
-    alcoholic: string,
-    category: string,
-    glass: string,
-    imgThumbnail: string,
-    ingredients: Array<string | undefined>,
-    measurements: Array<string | undefined>,
-    instructions: string
-}
-
 const formatDrinkData = (drinkResponse: IDrinkResponse): IDrinkData => {
 
     const ingredients: Array<string | undefined> = [drinkResponse.strIngredient1, drinkResponse.strIngredient2, drinkResponse.strIngredient3];
@@ -66,7 +54,7 @@ const formatDrinkData = (drinkResponse: IDrinkResponse): IDrinkData => {
         imgThumbnail: drinkResponse.strDrinkThumb,
         ingredients: ingredients,
         measurements: measurements,
-        instructions: drinkResponse.strInsrucstions
+        instructions: drinkResponse.strInstructions
     }
 
 }

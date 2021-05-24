@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 import ContentCard from './components/ContentCard';
 
 // Utils
-import formatDrinkData, { IDrinkData } from './utils/formatDrinkData';
+import formatDrinkData from './utils/formatDrinkData';
 import { getRandomCocktail } from './utils/cocktailDbConnection';
+
+// Interfaces
+import { IDrinkData } from './interfaces';
 
 const App: React.FC = () => {
 
@@ -18,7 +21,7 @@ const App: React.FC = () => {
   console.log(drinkData)
 
   return <main>
-    <ContentCard />
+    {(drinkData) ? <ContentCard drinkData={drinkData} /> : null}
   </main>
 }
 

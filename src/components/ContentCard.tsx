@@ -1,31 +1,32 @@
-const ContentCard: React.FC = () => {
+// Interfaces
+import { IDrinkData } from '../interfaces';
+
+interface IProps {
+    drinkData: IDrinkData
+}
+
+const ContentCard = (props: IProps) => {
     return <article>
-        <img src="https://via.placeholder.com/150" />
+        <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
 
         {/* Header Section */}
         <section>
-            <h2>Cocktail Name</h2>
-            <h3>Cocktail Category</h3>
+            <h2>{props.drinkData.drinkName}</h2>
+            <h3>{props.drinkData.category}</h3>
         </section>
 
         {/* Ingredients Section */}
         <section>
             <ul>
-                <li>Ingredient 1</li>
-                <li>Ingredient 2</li>
-                <li>Ingredient 3</li>
+                <li>{props.drinkData.ingredients[0]}</li>
+                <li>{props.drinkData.ingredients[1]}</li>
+                <li>{props.drinkData.ingredients[2]}</li>
             </ul>
         </section>
 
         {/* Instructions Section */}
         <section>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p>{props.drinkData.instructions}</p>
         </section>
     </article>
 }
