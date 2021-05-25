@@ -21,8 +21,13 @@ const ContentCard: React.FC<IProps> = (props) => {
         {/* Ingredients Section */}
         <section>
             <ul>
-                {props.drinkData.ingredients.map((ingredient: string | undefined, key: number): JSX.Element => {
-                    return (<IngredientListItem key={key} ingredient={ingredient} />);
+                {props.drinkData.ingredients.map((ingredient: string | undefined, index: number): JSX.Element => {
+                    return (
+                        <IngredientListItem
+                            key={index}
+                            ingredient={ingredient}
+                            measurement={props.drinkData.measurements[index]} />
+                    );
                 })}
             </ul>
         </section>

@@ -1,11 +1,15 @@
 // Interfaces
-interface IProps {
-    ingredient: string | undefined
+interface IIngredientProp {
+    ingredient: string | undefined,
+    measurement: string | undefined
 }
 
-const IngredientListItem: React.FC<IProps> = (props): JSX.Element => {
+const IngredientListItem: React.FC<IIngredientProp> = (props): JSX.Element => {
+    const { ingredient, measurement }: IIngredientProp = props;
+
     return <li>
-        {props.ingredient}
+        {(ingredient) ? <span>{ingredient}</span> : null}
+        {(measurement) ? <span>{` (${measurement})`}</span> : null}
     </li>
 }
 
