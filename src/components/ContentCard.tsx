@@ -21,7 +21,7 @@ const ContentCard: React.FC<IProps> = (props) => {
 
         {/* Ingredients Section */}
         <ContentCardSection>
-            <ul>
+            <ul className="flex flex-row flex-wrap justify-between">
                 {props.drinkData.ingredients.map((ingredient: string | undefined, index: number): JSX.Element => {
                     return (
                         <IngredientListItem
