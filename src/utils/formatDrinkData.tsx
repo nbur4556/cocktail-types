@@ -50,10 +50,6 @@ const formatDrinkData = (drinkResponse: IDrinkResponse): IDrinkData => {
         measurements.push(drinkResponse['strMeasure' + i]);
     }
 
-    console.log(drinkResponse);
-    console.log(ingredients);
-    console.log(measurements);
-
     return {
         id: drinkResponse.idDrink,
         drinkName: drinkResponse.strDrink,

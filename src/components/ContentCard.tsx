@@ -6,7 +6,7 @@ interface IProps {
 }
 
 const ContentCard = (props: IProps) => {
-    return <article>
+    return <article className="bg-gray-500 text-white rounded-md m-5 p-5">
         <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
 
         {/* Header Section */}
