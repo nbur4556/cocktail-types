@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const ContentCard: React.FC<IProps> = (props) => {
-    return <article className="bg-gray-500 text-white rounded-md m-5 p-5">
+    return <article className="bg-gray-500 text-white rounded-md w-1/3 my-5 mx-auto">
         <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
 
         {/* Header Section */}

@@ -1,5 +1,5 @@
 const ContentCardSection: React.FC<React.ReactNode> = (props) => {
-    return <section className="my-5">
+    return <section className="m-5">
         {props.children}
     </section>
 }
