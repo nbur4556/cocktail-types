@@ -1,4 +1,5 @@
 // Components
+import ContentCardSection from './ContentCardSection';
 import IngredientListItem from './IngredientListItem';
 
 // Interfaces
@@ -13,13 +14,13 @@ const ContentCard: React.FC<IProps> = (props) => {
         <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
 
         {/* Header Section */}
-        <section>
+        <ContentCardSection>
             <h2>{props.drinkData.drinkName}</h2>
             <h3>{props.drinkData.category}</h3>
-        </section>
+        </ContentCardSection>
 
         {/* Ingredients Section */}
-        <section>
+        <ContentCardSection>
             <ul>
                 {props.drinkData.ingredients.map((ingredient: string | undefined, index: number): JSX.Element => {
                     return (
@@ -30,12 +31,12 @@ const ContentCard: React.FC<IProps> = (props) => {
                     );
                 })}
             </ul>
-        </section>
+        </ContentCardSection>
 
         {/* Instructions Section */}
-        <section>
+        <ContentCardSection>
             <p>{props.drinkData.instructions}</p>
-        </section>
+        </ContentCardSection>
     </article>
 }
 
