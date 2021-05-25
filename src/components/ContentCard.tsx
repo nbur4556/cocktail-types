@@ -1,17 +1,18 @@
 // Components
 import ContentCardSection from './ContentCardSection';
+import ContentCardImage from './ContentCardImage';
 import IngredientListItem from './IngredientListItem';
 
 // Interfaces
 import { IDrinkData } from '../interfaces';
 
-interface IProps {
+interface ICardProps {
     drinkData: IDrinkData
 }
 
-const ContentCard: React.FC<IProps> = (props) => {
+const ContentCard: React.FC<ICardProps> = (props): JSX.Element => {
     return <article className="bg-gray-500 text-white rounded-md w-1/3 my-5 mx-auto">
-        <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
+        <ContentCardImage source={props.drinkData.imgThumbnail} />
 
         {/* Header Section */}
         <ContentCardSection>

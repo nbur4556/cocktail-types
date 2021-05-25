@@ -1,7 +1,7 @@
 // Interfaces
 interface IIngredientProp {
-    ingredient: string | undefined,
-    measurement: string | undefined
+    ingredient?: string,
+    measurement?: string
 }
 
 const IngredientListItem: React.FC<IIngredientProp> = (props): JSX.Element => {
