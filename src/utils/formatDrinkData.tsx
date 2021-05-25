@@ -42,8 +42,17 @@ interface IDrinkResponse {
 
 const formatDrinkData = (drinkResponse: IDrinkResponse): IDrinkData => {
 
-    const ingredients: Array<string | undefined> = [drinkResponse.strIngredient1, drinkResponse.strIngredient2, drinkResponse.strIngredient3];
-    const measurements: Array<string | undefined> = [drinkResponse.strMeasure1, drinkResponse.strMeasure2, drinkResponse.strMeasure3];
+    const ingredients: Array<string | undefined> = [];
+    const measurements: Array<string | undefined> = [];
+
+    for (let i: number = 0; i < 15; i++) {
+        ingredients.push(drinkResponse['strIngredient' + i]);
+        measurements.push(drinkResponse['strMeasure' + i]);
+    }
+
+    console.log(drinkResponse);
+    console.log(ingredients);
+    console.log(measurements);
 
     return {
         id: drinkResponse.idDrink,

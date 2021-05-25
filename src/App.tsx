@@ -18,8 +18,6 @@ const App: React.FC = () => {
     getRandomCocktail(result => setDrinkData(formatDrinkData(result.data.drinks[0])));
   }, []);
 
-  console.log(drinkData)
-
   return <main>
     {(drinkData) ? <ContentCard drinkData={drinkData} /> : null}
   </main>

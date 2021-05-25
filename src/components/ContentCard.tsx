@@ -18,9 +18,9 @@ const ContentCard = (props: IProps) => {
         {/* Ingredients Section */}
         <section>
             <ul>
-                <li>{props.drinkData.ingredients[0]}</li>
-                <li>{props.drinkData.ingredients[1]}</li>
-                <li>{props.drinkData.ingredients[2]}</li>
+                {props.drinkData.ingredients.map((ingredient: string | undefined, key: number): JSX.Element => {
+                    return (<li key={key}>{ingredient}</li>)
+                })}
             </ul>
         </section>
 
