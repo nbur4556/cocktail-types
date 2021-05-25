@@ -10,7 +10,7 @@ import { getRandomCocktail } from './utils/cocktailDbConnection';
 // Interfaces
 import { IDrinkData } from './interfaces';
 
-const App: React.FC = () => {
+const App: React.FC = (): JSX.Element => {
 
   const [drinkData, setDrinkData] = useState<IDrinkData>();
 

@@ -1,3 +1,6 @@
+// Components
+import IngredientListItem from './IngredientListItem';
+
 // Interfaces
 import { IDrinkData } from '../interfaces';
 
@@ -5,7 +8,7 @@ interface IProps {
     drinkData: IDrinkData
 }
 
-const ContentCard = (props: IProps) => {
+const ContentCard: React.FC<IProps> = (props) => {
     return <article className="bg-gray-500 text-white rounded-md m-5 p-5">
         <img src={props.drinkData.imgThumbnail} alt="Cocktail" />
 
@@ -19,7 +22,7 @@ const ContentCard = (props: IProps) => {
         <section>
             <ul>
                 {props.drinkData.ingredients.map((ingredient: string | undefined, key: number): JSX.Element => {
-                    return (<li key={key}>{ingredient}</li>)
+                    return (<IngredientListItem key={key} ingredient={ingredient} />);
                 })}
             </ul>
         </section>
