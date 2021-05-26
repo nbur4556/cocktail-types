@@ -3,7 +3,7 @@ interface IImageProps {
 }
 
 const ContentCardImage: React.FC<IImageProps> = (props): JSX.Element => {
-    return <section>
+    return <section className="size-card-image overflow-hidden">
         <img src={props.source} alt="Cocktail" />
     </section>
 }
