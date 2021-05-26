@@ -18,7 +18,7 @@ const ContentCard: React.FC<ICardProps> = (props): JSX.Element => {
             {/* Header Section */}
             <ContentCardSection>
                 <h2>{props.drinkData.drinkName}</h2>
-                <h3>{props.drinkData.category}</h3>
+                <h3 className="text-yellow-500">{props.drinkData.category}</h3>
             </ContentCardSection>
 
             {/* Ingredients Section */}
