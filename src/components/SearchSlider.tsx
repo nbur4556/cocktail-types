@@ -27,9 +27,10 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         });
     }
 
-    return <section>
+    return <section className="flex flex-row justify-evenly bg-yellow-500 p-5 rounded-3xl rounded-b-none">
         <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
         <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
+        <SearchSliderButton onClick={() => alert('Browse')}>Browse</SearchSliderButton>
     </section>
 }
 
