@@ -1,3 +1,6 @@
+// Components
+import SearchSliderButton from './SearchSliderButton';
+
 // Interfaces
 interface ISliderProps {
     setRandomCocktail: () => void
@@ -5,7 +8,7 @@ interface ISliderProps {
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     return <section>
-        <button className="bg-yellow-500" onClick={props.setRandomCocktail} >Get Random Drink</button>
+        <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
     </section>
 }
 

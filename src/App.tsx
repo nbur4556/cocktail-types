@@ -24,7 +24,6 @@ const App: React.FC = (): JSX.Element => {
   return <main>
     {(drinkData) ? <ContentCard drinkData={drinkData} /> : null}
     <SearchSlider setRandomCocktail={setRandomCocktail} />
-
   </main>
 }
 
