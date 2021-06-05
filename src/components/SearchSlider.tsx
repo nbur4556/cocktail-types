@@ -1,15 +1,34 @@
+import { useState } from 'react';
+
 // Components
 import SearchSliderButton from './SearchSliderButton';
 
+// Utils
+import { searchCocktail } from '../utils/cocktailDbConnection';
+
 // Interfaces
+import { IDrinkResponse } from '../interfaces';
 interface ISliderProps {
     setRandomCocktail: () => void,
-    setSearchedCocktail: () => void
+    setSearchedCocktail: (drink: IDrinkResponse) => void
+}
+
+interface ISearchParams {
+    searchBy: "name" | "ingredient" | "letter",
+    searchTerm: string
 }
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
+    const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: 'brandy' })
+
+    const handleSearch = (): void => {
+        searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
+            props.setSearchedCocktail(result.data.drinks[0]);
+        });
+    }
+
     return <section>
-        <SearchSliderButton onClick={props.setSearchedCocktail}>Search</SearchSliderButton>
+        <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
         <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
     </section>
 }

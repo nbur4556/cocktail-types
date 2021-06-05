@@ -6,10 +6,10 @@ import SearchSlider from './components/SearchSlider';
 
 // Utils
 import formatDrinkData from './utils/formatDrinkData';
-import { getRandomCocktail, searchCocktail } from './utils/cocktailDbConnection';
+import { getRandomCocktail } from './utils/cocktailDbConnection';
 
 // Interfaces
-import { IDrinkData } from './interfaces';
+import { IDrinkData, IDrinkResponse } from './interfaces';
 
 const App: React.FC = (): JSX.Element => {
 
@@ -20,8 +20,8 @@ const App: React.FC = (): JSX.Element => {
     getRandomCocktail(result => setDrinkData(formatDrinkData(result.data.drinks[0])));
   }
 
-  const setSearchedCocktail = (): void => {
-    searchCocktail('name', 'brandy', result => setDrinkData(formatDrinkData(result.data.drinks[0])));
+  const setSearchedCocktail = (drink: IDrinkResponse): void => {
+    setDrinkData(formatDrinkData(drink));
   }
 
   useEffect(setRandomCocktail, []);
