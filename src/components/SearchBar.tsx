@@ -1,12 +1,19 @@
-import { useState, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
-const SearchBar: React.FC = () => {
-    const [searchInput, setSearchInput] = useState<string>();
+// Interfaces
+import { ISearchParams } from './SearchSlider';
+interface ISearchBarProps {
+    searchParams: ISearchParams,
+    setSearchParams: (searchParams: ISearchParams) => void
+}
 
-    const handleSetSearchInput = (e: ChangeEvent<HTMLInputElement>): void => setSearchInput(e.target.value);
+const SearchBar: React.FC<ISearchBarProps> = (props) => {
+    const handleSetSearchTerm = (e: ChangeEvent<HTMLInputElement>): void => props.setSearchParams(
+        { ...props.searchParams, searchTerm: e.currentTarget.value }
+    );
 
     return <section>
-        <input type="text" value={searchInput} onChange={handleSetSearchInput} />
+        <input type="text" value={props.searchParams.searchTerm} onChange={handleSetSearchTerm} />
     </section>
 }
 

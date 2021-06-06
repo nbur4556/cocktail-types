@@ -14,7 +14,7 @@ interface ISliderProps {
     setSearchedCocktail: (drink: IDrinkResponse) => void
 }
 
-interface ISearchParams {
+export interface ISearchParams {
     searchBy: "name" | "ingredient" | "letter",
     searchTerm: string
 }
@@ -33,7 +33,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
         <SearchSliderButton onClick={() => alert('Browse')}>Browse</SearchSliderButton>
 
-        <SearchBar />
+        <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
     </section>
 }
 
