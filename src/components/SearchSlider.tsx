@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // Components
 import SearchSliderButton from './SearchSliderButton';
+import SearchBar from './SearchBar';
 
 // Utils
 import { searchCocktail } from '../utils/cocktailDbConnection';
@@ -31,6 +32,8 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
         <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
         <SearchSliderButton onClick={() => alert('Browse')}>Browse</SearchSliderButton>
+
+        <SearchBar />
     </section>
 }
 
