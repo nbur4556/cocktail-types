@@ -3,6 +3,7 @@ import { useState } from 'react';
 // Components
 import SearchSliderButton from './SearchSliderButton';
 import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
 
 // Utils
 import { searchCocktail } from '../utils/cocktailDbConnection';
@@ -21,6 +22,7 @@ export interface ISearchParams {
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: 'brandy' })
+    const [resultData, setResultData] = useState<Array<string>>(['Search Result 1', 'Search Result 2', 'Search Result 3']);
 
     const handleSearch = (): void => {
         searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
@@ -36,6 +38,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         </section>
 
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
+        <SearchResults resultData={resultData} />
     </section>
 }
 
