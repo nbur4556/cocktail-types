@@ -21,14 +21,15 @@ export interface ISearchParams {
 }
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
-    const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: 'brandy' })
+    const { setRandomCocktail, setSearchedCocktail }: ISliderProps = props;
+    const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' })
     const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
 
-    // const handleSelectResult = (): void => {
-    //     searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
-    //         props.setSearchedCocktail(result.data.drinks[0]);
-    //     });
-    // }
+    const handleSelectResult = (i: number): void => {
+        (resultData)
+            ? setSearchedCocktail(resultData[i])
+            : console.log('Error: no result data');
+    }
 
     const handleSearch = (): void => {
         searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
@@ -39,12 +40,12 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     return <section className="bg-yellow-500 p-5 rounded-3xl rounded-b-none">
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
-            <SearchSliderButton onClick={props.setRandomCocktail}>Random</SearchSliderButton>
+            <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
             <SearchSliderButton onClick={() => alert('Browse')}>Browse</SearchSliderButton>
         </section>
 
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
-        {(resultData !== undefined) ? <SearchResults resultData={resultData} /> : null}
+        {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
     </section>
 }
 
