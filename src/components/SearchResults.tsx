@@ -2,15 +2,14 @@
 import SearchResultItem from './SearchResultItem';
 
 // Interfaces
-interface IResultsProps {
-    resultData: Array<string>
-}
+import { IDrinkResponse } from '../interfaces';
+interface IResultsProps { resultData: Array<IDrinkResponse> }
 
 const SearchResults: React.FC<IResultsProps> = (props) => {
     return <section>
         <ol>
-            {props.resultData.map((result: string, index: number) => {
-                return <SearchResultItem key={index} itemText={result} />
+            {props.resultData.map((result, index) => {
+                return <SearchResultItem key={index} result={result} />
             })}
         </ol>
     </section>

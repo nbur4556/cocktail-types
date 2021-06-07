@@ -22,11 +22,17 @@ export interface ISearchParams {
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: 'brandy' })
-    const [resultData, setResultData] = useState<Array<string>>(['Search Result 1', 'Search Result 2', 'Search Result 3']);
+    const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
+
+    // const handleSelectResult = (): void => {
+    //     searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
+    //         props.setSearchedCocktail(result.data.drinks[0]);
+    //     });
+    // }
 
     const handleSearch = (): void => {
         searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
-            props.setSearchedCocktail(result.data.drinks[0]);
+            setResultData(result.data.drinks);
         });
     }
 
@@ -38,7 +44,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         </section>
 
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
-        <SearchResults resultData={resultData} />
+        {(resultData !== undefined) ? <SearchResults resultData={resultData} /> : null}
     </section>
 }
 
