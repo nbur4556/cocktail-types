@@ -4,6 +4,7 @@ import { useState } from 'react';
 import SearchSliderButton from './SearchSliderButton';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import SearchLetterList from './SearchLetterList';
 
 // Utils
 import { searchCocktail } from '../utils/cocktailDbConnection';
@@ -47,13 +48,18 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     }
 
     return <section className="bg-yellow-500 p-5 rounded-3xl rounded-b-none">
+        {/* Buttons */}
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
             <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
             <SearchSliderButton onClick={handleBrowse}>Browse</SearchSliderButton>
         </section>
 
+        {/* Controls */}
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
+        <SearchLetterList />
+
+        {/* Results */}
         {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
     </section>
 }
