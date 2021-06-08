@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // Components
 import SearchSliderButton from './SearchSliderButton';
@@ -23,8 +23,15 @@ export interface ISearchParams {
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     const { setRandomCocktail, setSearchedCocktail }: ISliderProps = props;
-    const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' })
+    const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' });
+    const [browseLetter, setBrowseLetter] = useState<string>('');
     const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
+
+    useEffect(() => {
+        if (browseLetter) {
+            handleBrowse();
+        }
+    }, [browseLetter]);
 
     // Get results of all cocktails by search term
     const handleSearch = (): void => {
@@ -35,7 +42,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
 
     // Get results of all cocktails by letter
     const handleBrowse = (): void => {
-        searchCocktail('letter', 'a', result => {
+        searchCocktail('letter', browseLetter, result => {
             setResultData(result.data.drinks);
         });
     }
@@ -57,7 +64,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
 
         {/* Controls */}
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
-        <SearchLetterList />
+        <SearchLetterList setBrowseLetter={setBrowseLetter} />
 
         {/* Results */}
         {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
