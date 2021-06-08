@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Components
 import SearchSliderButton from './SearchSliderButton';
@@ -24,14 +24,7 @@ export interface ISearchParams {
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     const { setRandomCocktail, setSearchedCocktail }: ISliderProps = props;
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' });
-    const [browseLetter, setBrowseLetter] = useState<string>('');
     const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
-
-    useEffect(() => {
-        if (browseLetter) {
-            handleBrowse();
-        }
-    }, [browseLetter]);
 
     // Get results of all cocktails by search term
     const handleSearch = (): void => {
@@ -41,8 +34,12 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     }
 
     // Get results of all cocktails by letter
-    const handleBrowse = (): void => {
-        searchCocktail('letter', browseLetter, result => {
+    const browseByLetter = (e: React.MouseEvent): void => {
+        const setLetter: string | null = e.currentTarget.getAttribute('data-letter');
+
+        if (!setLetter) return;
+
+        searchCocktail('letter', setLetter, result => {
             setResultData(result.data.drinks);
         });
     }
@@ -59,12 +56,12 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
             <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
-            <SearchSliderButton onClick={handleBrowse}>Browse</SearchSliderButton>
+            <SearchSliderButton onClick={() => console.log('browse')}>Browse</SearchSliderButton>
         </section>
 
         {/* Controls */}
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
-        <SearchLetterList setBrowseLetter={setBrowseLetter} />
+        <SearchLetterList browseByLetter={browseByLetter} />
 
         {/* Results */}
         {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
