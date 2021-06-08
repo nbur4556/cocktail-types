@@ -25,23 +25,32 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' })
     const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
 
-    const handleSelectResult = (i: number): void => {
-        (resultData)
-            ? setSearchedCocktail(resultData[i])
-            : console.log('Error: no result data');
-    }
-
+    // Get results of all cocktails by search term
     const handleSearch = (): void => {
         searchCocktail(searchParams.searchBy, searchParams.searchTerm, result => {
             setResultData(result.data.drinks);
         });
     }
 
+    // Get results of all cocktails by letter
+    const handleBrowse = (): void => {
+        searchCocktail('letter', 'a', result => {
+            setResultData(result.data.drinks);
+        });
+    }
+
+    // Select a cocktail from search results
+    const handleSelectResult = (i: number): void => {
+        (resultData)
+            ? setSearchedCocktail(resultData[i])
+            : console.log('Error: no result data');
+    }
+
     return <section className="bg-yellow-500 p-5 rounded-3xl rounded-b-none">
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
             <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
-            <SearchSliderButton onClick={() => alert('Browse')}>Browse</SearchSliderButton>
+            <SearchSliderButton onClick={handleBrowse}>Browse</SearchSliderButton>
         </section>
 
         <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
