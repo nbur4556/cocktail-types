@@ -30,7 +30,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     const { setRandomCocktail, setSearchedCocktail }: ISliderProps = props;
     const [controlsUi, setControlsUi] = useState<IDisplayUi>({ search: false, browse: false });
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' });
-    const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
+    const [resultData, setResultData] = useState<Array<IDrinkResponse>>([]);
 
     // Get results of all cocktails by search term
     const handleSearch = (): void => {
@@ -39,8 +39,20 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         });
     }
 
-    const toggleSearchControlsUi = (): void => setControlsUi({ browse: false, search: !controlsUi.search });
-    const toggleBrowseControlsUi = (): void => setControlsUi({ search: false, browse: !controlsUi.browse });
+    const handleRandom = (): void => {
+        setResultData([]);
+        setControlsUi({ browse: false, search: false });
+        setRandomCocktail();
+    }
+
+    const toggleSearchControlsUi = (): void => {
+        setResultData([]);
+        setControlsUi({ browse: false, search: !controlsUi.search });
+    }
+    const toggleBrowseControlsUi = (): void => {
+        setResultData([]);
+        setControlsUi({ search: false, browse: !controlsUi.browse });
+    }
 
     // Get results of all cocktails by letter
     const browseByLetter = (e: React.MouseEvent): void => {
@@ -64,7 +76,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         {/* Buttons */}
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={toggleSearchControlsUi}>Search</SearchSliderButton>
-            <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
+            <SearchSliderButton onClick={handleRandom}>Random</SearchSliderButton>
             <SearchSliderButton onClick={toggleBrowseControlsUi}>Browse</SearchSliderButton>
         </section>
 
