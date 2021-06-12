@@ -4,7 +4,8 @@ import { ChangeEvent } from 'react';
 import { ISearchParams } from './SearchSlider';
 interface ISearchBarProps {
     searchParams: ISearchParams,
-    setSearchParams: (searchParams: ISearchParams) => void
+    setSearchParams: (searchParams: ISearchParams) => void,
+    handleSearch: () => void
 }
 
 const SearchBar: React.FC<ISearchBarProps> = (props) => {
@@ -13,7 +14,8 @@ const SearchBar: React.FC<ISearchBarProps> = (props) => {
     );
 
     return <section>
-        <input type="text" value={props.searchParams.searchTerm} onChange={handleSetSearchTerm} />
+        <input className="p-1 rounded" type="text" value={props.searchParams.searchTerm} onChange={handleSetSearchTerm} />
+        <button className="bg-gray-500 py-1 px-3 mx-3 rounded" onClick={props.handleSearch}>Search</button>
     </section>
 }
 

@@ -69,8 +69,12 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         </section>
 
         {/* Controls */}
-        {(controlsUi.search) ? <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} /> : null}
-        {(controlsUi.browse) ? <SearchLetterList browseByLetter={browseByLetter} /> : null}
+        {(controlsUi.search)
+            ? <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} handleSearch={handleSearch} />
+            : null}
+        {(controlsUi.browse)
+            ? <SearchLetterList browseByLetter={browseByLetter} />
+            : null}
 
         {/* Results */}
         {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
