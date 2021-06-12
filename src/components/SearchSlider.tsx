@@ -16,6 +16,11 @@ interface ISliderProps {
     setSearchedCocktail: (drink: IDrinkResponse) => void
 }
 
+interface IDisplayUi {
+    search: boolean,
+    browse: boolean
+}
+
 export interface ISearchParams {
     searchBy: "name" | "ingredient" | "letter",
     searchTerm: string
@@ -23,6 +28,7 @@ export interface ISearchParams {
 
 const SearchSlider: React.FC<ISliderProps> = (props) => {
     const { setRandomCocktail, setSearchedCocktail }: ISliderProps = props;
+    const [controlsUi, setControlsUi] = useState<IDisplayUi>({ search: false, browse: false });
     const [searchParams, setSearchParams] = useState<ISearchParams>({ searchBy: 'name', searchTerm: '' });
     const [resultData, setResultData] = useState<Array<IDrinkResponse>>();
 
@@ -32,6 +38,9 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
             setResultData(result.data.drinks);
         });
     }
+
+    const toggleSearchControlsUi = (): void => setControlsUi({ browse: false, search: !controlsUi.search });
+    const toggleBrowseControlsUi = (): void => setControlsUi({ search: false, browse: !controlsUi.browse });
 
     // Get results of all cocktails by letter
     const browseByLetter = (e: React.MouseEvent): void => {
@@ -54,14 +63,14 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
     return <section className="bg-yellow-500 p-5 rounded-3xl rounded-b-none">
         {/* Buttons */}
         <section className="flex flex-row justify-evenly">
-            <SearchSliderButton onClick={handleSearch}>Search</SearchSliderButton>
+            <SearchSliderButton onClick={toggleSearchControlsUi}>Search</SearchSliderButton>
             <SearchSliderButton onClick={setRandomCocktail}>Random</SearchSliderButton>
-            <SearchSliderButton onClick={() => console.log('browse')}>Browse</SearchSliderButton>
+            <SearchSliderButton onClick={toggleBrowseControlsUi}>Browse</SearchSliderButton>
         </section>
 
         {/* Controls */}
-        <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
-        <SearchLetterList browseByLetter={browseByLetter} />
+        {(controlsUi.search) ? <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} /> : null}
+        {(controlsUi.browse) ? <SearchLetterList browseByLetter={browseByLetter} /> : null}
 
         {/* Results */}
         {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
