@@ -11,10 +11,10 @@ interface ICardProps {
 }
 
 const ContentCard: React.FC<ICardProps> = (props): JSX.Element => {
-    return <article className="bg-gray-500 text-white rounded-md w-1/3 my-5 mx-auto overflow-auto">
+    return <article className="bg-gray-500 text-white rounded-md w-1/3 my-5 mx-auto">
         <ContentCardImage source={props.drinkData.imgThumbnail} />
 
-        <section>
+        <section className="h-80 rounded overflow-auto">
             {/* Header Section */}
             <ContentCardSection>
                 <h2>{props.drinkData.drinkName}</h2>
@@ -22,7 +22,7 @@ const ContentCard: React.FC<ICardProps> = (props): JSX.Element => {
             </ContentCardSection>
 
             {/* Ingredients Section */}
-            <ContentCardSection>
+            <ContentCardSection >
                 <ul className="flex flex-row flex-wrap justify-between">
                     {props.drinkData.ingredients.map((ingredient: string | undefined, index: number): JSX.Element => {
                         return (
