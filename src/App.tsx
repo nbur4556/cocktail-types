@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './scrollbar.css';
 
 // Components
 import ContentCard from './components/ContentCard';
