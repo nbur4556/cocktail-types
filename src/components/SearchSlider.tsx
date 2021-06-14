@@ -70,6 +70,10 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
         (resultData)
             ? setSearchedCocktail(resultData[i])
             : console.log('Error: no result data');
+
+        setResultData([]);
+        setControlsUi({ browse: false, search: false });
+        setSearchParams({ ...searchParams, searchTerm: '' })
     }
 
     return <section className="fixed bottom-0 w-screen bg-yellow-500 p-5 rounded-3xl rounded-b-none">
