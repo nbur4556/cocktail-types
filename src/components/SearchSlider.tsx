@@ -72,7 +72,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
             : console.log('Error: no result data');
     }
 
-    return <section className="bg-yellow-500 p-5 rounded-3xl rounded-b-none">
+    return <section className="fixed bottom-0 w-screen bg-yellow-500 p-5 rounded-3xl rounded-b-none">
         {/* Buttons */}
         <section className="flex flex-row justify-evenly">
             <SearchSliderButton onClick={toggleSearchControlsUi}>Search</SearchSliderButton>
