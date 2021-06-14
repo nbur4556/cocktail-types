@@ -9,7 +9,7 @@ interface IResultsProps {
 }
 
 const SearchResults: React.FC<IResultsProps> = (props) => {
-    return <section>
+    return <section className="py-3 px-52">
         <ol>
             {props.resultData.map((result, index) => {
                 return <SearchResultItem
