@@ -6,7 +6,7 @@ interface ILetterList {
 }
 
 const SearchLetterList: React.FC<ILetterList> = (props) => {
-    return <ul className="flex gap-5">
+    return <ul className="flex justify-center gap-12 p-3">
         {alphabetLetters.map((letter: string, index: number): JSX.Element => {
             return <li key={index} onClick={props.browseByLetter} data-letter={letter} >{letter}</li>
         })}
