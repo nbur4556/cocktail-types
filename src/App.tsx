@@ -28,6 +28,7 @@ const App: React.FC = (): JSX.Element => {
   useEffect(setRandomCocktail, []);
 
   return <main>
+    {alert('test')}
     {(drinkData) ? <ContentCard drinkData={drinkData} /> : null}
     <SearchSlider setRandomCocktail={setRandomCocktail} setSearchedCocktail={setSearchedCocktail} />
   </main>
