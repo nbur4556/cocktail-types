@@ -1,9 +1,11 @@
 module.exports = {
-    purge: [
-        './ src/**/*.{ js, jsx, ts, tsx }',
-        './ src/**/**/*.{ js, jsx, ts, tsx }',
-        './public/index.html'
-    ],
+    purge: {
+        layers: ['components, utils'],
+        content: [
+            './ src/**/ *.{ js, jsx, ts, tsx }',
+            './public/index.html'
+        ]
+    },
     darkMode: false,
     theme: {
         maxHeight: {
