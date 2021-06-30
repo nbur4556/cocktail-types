@@ -1,9 +1,5 @@
 module.exports = {
-    purge: [
-        './build/*.html',
-        './build/static/**/*.css',
-        './build/static/**/*.js'
-    ],
+    purge: ['./src/**/*.{js, jsx, ts, tsx}'],
     darkMode: false,
     theme: {
         maxHeight: {
