@@ -11,7 +11,7 @@ interface ICardProps {
 }
 
 const ContentCard: React.FC<ICardProps> = (props): JSX.Element => {
-    return <article className="bg-gray-500 text-white rounded-md max-w-2xl my-5 mx-auto">
+    return <article className="bg-gray-500 text-white rounded-md max-w-2xl w-10/12 m-5 mx-auto">
         <ContentCardImage source={props.drinkData.imgThumbnail} />
 
         <section className="h-80 rounded overflow-auto">
