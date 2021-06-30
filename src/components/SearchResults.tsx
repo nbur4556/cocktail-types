@@ -9,16 +9,16 @@ interface IResultsProps {
 }
 
 const SearchResults: React.FC<IResultsProps> = (props) => {
+    const getMappedResult = (result: IDrinkResponse, index: number) => {
+        console.log(result);
+        return <SearchResultItem
+            key={index} index={index} result={result} handleSelectResult={props.handleSelectResult}
+        />
+    }
+
     return <section className="py-3 px-52">
         <ol>
-            {props.resultData.map((result, index) => {
-                return <SearchResultItem
-                    key={index}
-                    index={index}
-                    result={result}
-                    handleSelectResult={props.handleSelectResult}
-                />
-            })}
+            {(props.resultData) ? props.resultData.map(getMappedResult) : <li>No Results Found</li>}
         </ol>
     </section>
 }
