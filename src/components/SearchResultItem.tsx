@@ -15,7 +15,7 @@ const SearchResultItem: React.FC<IResultItemProps> = (props) => {
 
     const handleOnClick = (): void => handleSelectResult(index);
 
-    return <li onClick={handleOnClick}>{drinkItem.drinkName}</li>
+    return <li className="cursor-pointer" onClick={handleOnClick}>{drinkItem.drinkName}</li>
 }
 
 export default SearchResultItem;

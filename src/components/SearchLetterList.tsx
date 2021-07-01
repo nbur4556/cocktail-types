@@ -6,9 +6,9 @@ interface ILetterList {
 }
 
 const SearchLetterList: React.FC<ILetterList> = (props) => {
-    return <ul className="flex justify-center gap-12 p-3">
+    return <ul className="flex flex-wrap justify-center 2xl:gap-12 gap-7 p-3">
         {alphabetLetters.map((letter: string, index: number): JSX.Element => {
-            return <li key={index} onClick={props.browseByLetter} data-letter={letter} >{letter}</li>
+            return <li key={index} className="font-semibold cursor-pointer" onClick={props.browseByLetter} data-letter={letter} >{letter}</li>
         })}
     </ul>
 }
