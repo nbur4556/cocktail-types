@@ -15,7 +15,7 @@ const SearchResults: React.FC<IResultsProps> = (props) => {
         />
     }
 
-    return <section className="m-10">
+    return <section className="h-80 md:m-10 my-10 overflow-y-scroll">
         <ol className="flex flex-wrap justify-center space-between gap-5">
             {(props.resultData) ? props.resultData.map(getMappedResult) : <li>No Results Found</li>}
         </ol>
