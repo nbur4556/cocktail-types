@@ -10,7 +10,6 @@ interface IResultsProps {
 
 const SearchResults: React.FC<IResultsProps> = (props) => {
     const getMappedResult = (result: IDrinkResponse, index: number) => {
-        console.log(result);
         return <SearchResultItem
             key={index} index={index} result={result} handleSelectResult={props.handleSelectResult}
         />

@@ -18,9 +18,9 @@ const SearchBar: React.FC<ISearchBarProps> = (props) => {
         props.handleSearch();
     }
 
-    return <form className="flex justify-center gap-8 p-3">
+    return <form className="flex justify-center md:gap-8 gap-3 p-3">
         <input className="p-3 w-3/4 rounded" type="text" value={props.searchParams.searchTerm} onChange={handleSetSearchTerm} />
-        <button className="bg-gray-500 text-white py-3 px-10 rounded" onClick={handleSearchClick}>Search</button>
+        <button className="bg-gray-500 text-white md:px-10 p-3 rounded" onClick={handleSearchClick}>Search</button>
     </form>
 }
 

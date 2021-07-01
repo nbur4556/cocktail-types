@@ -93,7 +93,7 @@ const SearchSlider: React.FC<ISliderProps> = (props) => {
             : null}
 
         {/* Results */}
-        {(resultData !== undefined) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
+        {(resultData?.length !== 0) ? <SearchResults resultData={resultData} handleSelectResult={handleSelectResult} /> : null}
     </section>
 }
 
