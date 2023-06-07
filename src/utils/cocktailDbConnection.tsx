@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 
 const baseUrl: string = 'https://www.thecocktaildb.com/api/json/v1';
-const apiKey: string | undefined = process.env.REACT_APP_COCKTAILDB_API_KEY;
+//TODO: Get API key from process.env
+// const apiKey: string | undefined = process.env.REACT_APP_COCKTAILDB_API_KEY;
+const apiKey: string | undefined = "";
 
 //Interfaces
 interface ISearchParams {
