@@ -12,8 +12,8 @@ import { getRandomCocktail } from './utils/cocktailDbConnection';
 // Interfaces
 import { IDrinkData, IDrinkResponse } from './interfaces';
 
+//TODO: configure tailwind styles
 const App: React.FC = (): JSX.Element => {
-
   const [drinkData, setDrinkData] = useState<IDrinkData>();
 
   // Set a single random cocktail as drink data state

@@ -1,3 +1,4 @@
+/* TODO: Confirm scrollbar styles are still applied */
 ::-webkit-scrollbar{
     width: 0.5rem;
 }

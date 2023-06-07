@@ -1,23 +1,21 @@
-module.exports = {
-    purge: {
-        layers: ['components', 'utils'],
-        content: [
-            './ src/**/ *.{ js, jsx, ts, tsx }',
-            './public/index.html'
-        ]
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      //? Is this needed?
+      maxHeight: {
+        '0': '0',
+        '1/4': '25vh',
+        '1/2': '50vh',
+        '3/4': '75vh',
+        'full': '100vh'
+      }
     },
-    darkMode: false,
-    theme: {
-        maxHeight: {
-            '0': '0',
-            '1/4': '25vh',
-            '1/2': '50vh',
-            '3/4': '75vh',
-            'full': '100vh'
-        }
-    },
-    variants: {
-        extend: {}
-    },
-    plugin: []
+  },
+  plugins: [],
 }
+
