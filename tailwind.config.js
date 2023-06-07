@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     extend: {
+      //? Is this needed?
       maxHeight: {
         '0': '0',
         '1/4': '25vh',
